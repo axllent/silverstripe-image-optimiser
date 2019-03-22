@@ -125,7 +125,7 @@ class FlysystemAssetStore extends SS_FlysystemAssetStore
         $optim_size = filesize($tmp_file);
 
         if ($raw_size > $optim_size && $optim_size > 0) {
-            print "$filename = $raw_size:$optim_size, ";
+            // print "$filename = $raw_size:$optim_size, ";
             $raw = file_get_contents($tmp_file);
             file_put_contents($path, $raw);
         }
