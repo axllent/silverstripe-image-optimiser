@@ -1,4 +1,4 @@
-# Automaticly optimise all uploaded & resampled images for SilverStripe
+# Optimised images for SilverStripe
 
 A module to automatically optimise/compress both uploaded as well as any resampled
 (cropped, scaled etc) images in SilverStripe. Images (JPG, PNG & GIF) are automatically
@@ -39,11 +39,13 @@ composer require axllent/silverstripe-optimised-images
 sudo apt-get install jpegoptim optipng pngquant gifsicle
 ```
 
+
 ### Installing the utilities on Alpine Linux:
 
 ```bash
 apk add jpegoptim optipng pngquant gifsicle
 ```
+
 
 ## Usage
 
