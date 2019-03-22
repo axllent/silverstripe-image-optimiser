@@ -1,0 +1,9 @@
+---
+Name: imageoptimiserflysystemassetstore
+After:
+  - "assetscore"
+  - "assetstore"
+---
+SilverStripe\Core\Injector\Injector:
+  SilverStripe\Assets\Storage\AssetStore:
+    class: Axllent\ImageOptimiser\Flysystem\FlysystemAssetStore
