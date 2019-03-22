@@ -1,6 +1,6 @@
 {
 	"name": "axllent/silverstripe-image-optimiser",
-	"description": "Automatically optimise both uploaded & resampled images for SilverStripe",
+	"description": "Automaticly optimise all uploaded & resampled images in SilverStripe",
 	"type": "silverstripe-vendormodule",
 	"homepage": "https://github.com/axllent/silverstripe-image-optimiser",
 	"keywords": ["silverstripe", "upload", "image", "compress", "optimisation"],
