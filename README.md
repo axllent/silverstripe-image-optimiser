@@ -21,7 +21,7 @@ optimise all existing (previously created) images.
 The module uses [spatie/image-optimizer](https://github.com/spatie/image-optimizer) and will use the
 following optimisers if they are both present and in your default path on your system:
 
-- [JpegOptim](http://freecode.com/projects/jpegoptim)
+- [JpegOptim](https://github.com/tjko/jpegoptim)
 - [Optipng](http://optipng.sourceforge.net/)
 - [Pngquant 2](https://pngquant.org/)
 - [Gifsicle](http://www.lcdf.org/gifsicle/)
