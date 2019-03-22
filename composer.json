@@ -15,8 +15,9 @@
 		"issues": "https://github.com/axllent/silverstripe-image-optimiser/issues"
 	},
     "require": {
-        "silverstripe/assets": "^1.3.0",
-        "spatie/image-optimizer": "^1.4"
+        "silverstripe/framework": "^4.0",
+        "silverstripe/assets": "*",
+        "spatie/image-optimizer": "^1.1.4"
     },
     "suggest": {
         "axllent/silverstripe-scaled-uploads": "Automatically scale down large uploaded images"
