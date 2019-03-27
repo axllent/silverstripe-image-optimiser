@@ -112,10 +112,15 @@ class ImageOptimiserTask extends BuildTask
         $total_kb_saved = 0;
 
         foreach ($images as $img) {
-            $asetValues = $img->File->getValue();
-            $flyID      = $getID->invoke($store, $asetValues['Filename'], $asetValues['Hash']);
-            $system     = $getFileSystem->invoke($store, $flyID);
+            $assetValues = $img->File->getValue();
+            $flyID       = $getID->invoke($store, $assetValues['Filename'], $assetValues['Hash']);
+            $system      = $getFileSystem->invoke($store, $flyID);
             $findVariants->setAccessible(true);
+            
+            if (empty($assetValues)) {
+                continue;
+            }
+            
             foreach ($findVariants->invoke($store, $flyID, $system) as $variant) {
                 array_push($files, $variant);
 
