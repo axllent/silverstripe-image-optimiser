@@ -26,12 +26,16 @@ use Spatie\ImageOptimizer\OptimizerChain;
 class ImageOptimiserTask extends BuildTask
 {
     /**
+     * Task Title
+     *
      * @var string $title Shown in the overview on the {@link TaskRunner}
      * HTML or CLI interface. Should be short and concise, no HTML allowed.
      */
     protected $title = 'Optimise All Images';
 
     /**
+     * Task Description
+     *
      * @var string $description Describe the implications the task has,
      * and the changes it makes. Accepts HTML formatting.
      */
@@ -41,6 +45,7 @@ class ImageOptimiserTask extends BuildTask
      * Set a custom url segment (to follow dev/tasks/)
      *
      * @config
+     *
      * @var string
      */
     private static $segment = 'ImageOptimiser';
@@ -49,8 +54,9 @@ class ImageOptimiserTask extends BuildTask
      * Implement this method in the task subclass to
      * execute via the TaskRunner
      *
-     * @param HTTPRequest $request
-     * @return
+     * @param HTTPRequest $request HTTP request
+     *
+     * @return String
      */
     public function run($request)
     {
@@ -80,6 +86,8 @@ class ImageOptimiserTask extends BuildTask
     /**
      * Find All Images And Variants
      * Optionally optimise
+     *
+     * @param Boolean $optimise Whether to optimise the images
      *
      * @return Array Array of all images and variants on FlysystemAssetStore
      */
@@ -116,11 +124,11 @@ class ImageOptimiserTask extends BuildTask
             $flyID       = $getID->invoke($store, $assetValues['Filename'], $assetValues['Hash']);
             $system      = $getFileSystem->invoke($store, $flyID);
             $findVariants->setAccessible(true);
-            
+
             if (empty($assetValues)) {
                 continue;
             }
-            
+
             foreach ($findVariants->invoke($store, $flyID, $system) as $variant) {
                 array_push($files, $variant);
 
@@ -154,5 +162,4 @@ class ImageOptimiserTask extends BuildTask
 
         return $files;
     }
-
 }
