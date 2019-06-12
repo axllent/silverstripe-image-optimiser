@@ -52,9 +52,9 @@ apk add jpegoptim optipng pngquant gifsicle
 Assuming you have the necessary binaries installed, it should "just work" with the default settings
 once you have flushed your SilverStripe installation.
 
-If you need to optimise any previously-uploaded images, see `dev/tasks/ImageOptimiser`.
+~~If you need to optimise any previously-uploaded images, see `dev/tasks/ImageOptimiser`.
 This should only be needed once for older images as any new images uploaded will
-get automatically optimised.
+get automatically optimised.~~  Currently this has been disabled as it causes corruption due to filehash mismatches (and upgrade issues to >= 4.4.0). Once I have thought of a more elgant method I will enable it. In the meantime pull requests are welcome.
 
 For custom optimisation settings, please refer to the
 [Configuration documentation](docs/en/Configuration.md).

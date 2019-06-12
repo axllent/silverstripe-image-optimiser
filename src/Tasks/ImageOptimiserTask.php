@@ -51,6 +51,14 @@ class ImageOptimiserTask extends BuildTask
     private static $segment = 'ImageOptimiser';
 
     /**
+     * Enable the task
+     *
+     * @var bool $enabled If set to FALSE, keep it from showing in the list
+     * and from being executable through URL or CLI.
+     */
+    private static $enabled = false;
+
+    /**
      * Implement this method in the task subclass to
      * execute via the TaskRunner
      *
