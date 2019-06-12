@@ -56,7 +56,7 @@ class ImageOptimiserTask extends BuildTask
      * @var bool $enabled If set to FALSE, keep it from showing in the list
      * and from being executable through URL or CLI.
      */
-    private static $enabled = false;
+    protected $enabled = false;
 
     /**
      * Implement this method in the task subclass to
