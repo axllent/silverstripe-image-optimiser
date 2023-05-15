@@ -1,4 +1,5 @@
 <?php
+
 namespace Axllent\ImageOptimiser\Flysystem;
 
 use SilverStripe\Assets\Flysystem\FlysystemAssetStore as SS_FlysystemAssetStore;
@@ -13,6 +14,7 @@ use Spatie\ImageOptimizer\OptimizerChain;
  * to automatically optimise files prior to storage.
  *
  * @license: MIT-style license http://opensource.org/licenses/MIT
+ *
  * @author:  Techno Joy development team (www.technojoy.co.nz)
  */
 class FlysystemAssetStore extends SS_FlysystemAssetStore
@@ -29,15 +31,15 @@ class FlysystemAssetStore extends SS_FlysystemAssetStore
             '--max=85',
             '--all-progressive',
         ],
-        'Spatie\ImageOptimizer\Optimizers\Pngquant'  => [
+        'Spatie\ImageOptimizer\Optimizers\Pngquant' => [
             '--force',
         ],
-        'Spatie\ImageOptimizer\Optimizers\Optipng'   => [
+        'Spatie\ImageOptimizer\Optimizers\Optipng' => [
             '-i0',
             '-o2',
             '-quiet',
         ],
-        'Spatie\ImageOptimizer\Optimizers\Gifsicle'  => [
+        'Spatie\ImageOptimizer\Optimizers\Gifsicle' => [
             '-b',
             '-O3',
         ],
@@ -46,17 +48,17 @@ class FlysystemAssetStore extends SS_FlysystemAssetStore
     /**
      * Asset Store file from local file
      *
-     * @param String $path     Local path
-     * @param String $filename Optional filename
-     * @param String $hash     Optional hash
-     * @param String $variant  Optional variant
-     * @param Array  $config   Optional config options
+     * @param string $path     Local path
+     * @param string $filename Optional filename
+     * @param string $hash     Optional hash
+     * @param string $variant  Optional variant
+     * @param array  $config   Optional config options
      *
      * @return void
      */
     public function setFromLocalFile($path, $filename = null, $hash = null, $variant = null, $config = [])
     {
-        $this->_optimisePath($path, $filename);
+        $this->optimisePath($path, $filename);
 
         return parent::setFromLocalFile($path, $filename, $hash, $variant, $config);
     }
@@ -64,11 +66,11 @@ class FlysystemAssetStore extends SS_FlysystemAssetStore
     /**
      * Asset Store file from string
      *
-     * @param String $data     File string
-     * @param String $filename Optional file name
-     * @param String $hash     Optional hash
-     * @param String $variant  Optional variant
-     * @param Array  $config   Optional config options
+     * @param string $data     File string
+     * @param string $filename Optional file name
+     * @param string $hash     Optional hash
+     * @param string $variant  Optional variant
+     * @param array  $config   Optional config options
      *
      * @return void
      */
@@ -78,7 +80,7 @@ class FlysystemAssetStore extends SS_FlysystemAssetStore
             $extension = substr(strrchr($filename, '.'), 1);
             $tmp_file  = TEMP_PATH . DIRECTORY_SEPARATOR . 'raw_' . uniqid() . '.' . $extension;
             file_put_contents($tmp_file, $data);
-            $this->_optimisePath($tmp_file, $filename);
+            $this->optimisePath($tmp_file, $filename);
             $data = file_get_contents($tmp_file);
             unlink($tmp_file);
         }
@@ -90,16 +92,16 @@ class FlysystemAssetStore extends SS_FlysystemAssetStore
      * Optimise a file path
      * Silently ignores unsupported filetypes
      *
-     * @param String $path     Path to file
-     * @param String $filename File name
+     * @param string $path     Path to file
+     * @param string $filename File name
      *
      * @return void
      */
-    private function _optimisePath($path, $filename = null)
+    private function optimisePath($path, $filename = null)
     {
         if (!$filename) {
             // we do not know the name, so probably cannot
-            // identfy what file it actually is, skip processing
+            // identify what file it actually is, skip processing
             return;
         }
 
@@ -112,7 +114,7 @@ class FlysystemAssetStore extends SS_FlysystemAssetStore
         $chains = $this->config()->get('chains');
 
         // create optimizer
-        $optimizer = new OptimizerChain;
+        $optimizer = new OptimizerChain();
         foreach ($chains as $class => $options) {
             $optimizer->addOptimizer(
                 new $class($options)
@@ -121,11 +123,10 @@ class FlysystemAssetStore extends SS_FlysystemAssetStore
 
         $optimizer->optimize($tmp_file);
 
-        $raw_size   = filesize($path);
-        $optim_size = filesize($tmp_file);
+        $raw_size = filesize($path);
+        $opt_size = filesize($tmp_file);
 
-        if ($raw_size > $optim_size && $optim_size > 0) {
-            // print "$filename = $raw_size:$optim_size, ";
+        if ($raw_size > $opt_size && $opt_size > 0) {
             $raw = file_get_contents($tmp_file);
             file_put_contents($path, $raw);
         }

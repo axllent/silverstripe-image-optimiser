@@ -10,7 +10,8 @@ the image before adding the image to the store.
 
 ## Requirements
 
-- `silverstripe/assets` ^4.0
+- `silverstripe/framework` ^4.0 || ^5.0
+- `silverstripe/assets` ^1.10 || ^2.0
 - [spatie/image-optimizer](https://github.com/spatie/image-optimizer) - automatically installed
 - JpegOptim, Optipng, Pngquant 2 & Gifsicle binaries (see below)
 
