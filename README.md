@@ -7,14 +7,12 @@ optimised, provided you have the correct binaries installed (see "Installation" 
 The module overrides the default `FlysystemAssetStore` to and transparently optimises
 the image before adding the image to the store.
 
-
 ## Requirements
 
-- `silverstripe/framework` ^4.0 || ^5.0
-- `silverstripe/assets` ^1.10 || ^2.0
+- `silverstripe/framework` ^4.0 || ^5.0 || ^6.0
+- `silverstripe/assets` ^1.10 || ^2.0 || ^3.0
 - [spatie/image-optimizer](https://github.com/spatie/image-optimizer) - automatically installed
 - JpegOptim, Optipng, Pngquant 2 & Gifsicle binaries (see below)
-
 
 ## Optimisation tools
 
@@ -25,7 +23,6 @@ following optimisers if they are both present and in your default path on your s
 - [Optipng](http://optipng.sourceforge.net/)
 - [Pngquant 2](https://pngquant.org/)
 - [Gifsicle](http://www.lcdf.org/gifsicle/)
-
 
 ## Installation
 
@@ -39,13 +36,11 @@ composer require axllent/silverstripe-image-optimiser
 sudo apt-get install jpegoptim optipng pngquant gifsicle
 ```
 
-
 ### Installing the utilities on Alpine Linux:
 
 ```bash
 apk add jpegoptim optipng pngquant gifsicle
 ```
-
 
 ## Usage
 
