@@ -2,6 +2,10 @@
 
 Notable changes to this project will be documented in this file.
 
+## [1.0.6]
+
+- Add support for Silverstripe 6
+
 ## [1.0.5]
 
 - Add support for Silverstripe 5
@@ -10,21 +14,17 @@ Notable changes to this project will be documented in this file.
 
 - Bugfix, disable ImageOptimiserTask with `protected $enabled`
 
-
 ## [1.0.3]
 
 - Disable ImageOptimiserTask due to filesystem/database mismatch
-
 
 ## [1.0.2]
 
 - Skip empty files in ImageOptimiserTask
 
-
 ## [1.0.1]
 
 - Remove debugging information
-
 
 ## [1.0.0]
 
